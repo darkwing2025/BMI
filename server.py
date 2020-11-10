@@ -10,11 +10,11 @@ def root():
 def not_found(e):
     return "Oops, we cannot find the page you are lookig for"
 
-@app.route('/calcbmi', methods=['GET', 'POST'])
+@app.route('/calcbmi')
 def calcbmi():
-    name = request.form.get('name')
-    height = float(request.form.get('height'))
-    weight = float(request.form.get('weight'))
+    name = request.args['name']
+    height = float(request.args['height'])
+    weight = float(request.args['weight'])
     bmi = round(weight/(height**2),1)
     return "{}'s BMI is {}.".format(name, bmi)
 	
